@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "ceb33897-7087-4a18-935c-c29b8b137aa7",
+    "name": "DesafioFullstack",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51808652",
+    "_collection_link": "https://go.postman.co/collection/51808652-ceb33897-7087-4a18-935c-c29b8b137aa7?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Listar Todos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5100/api/contatos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5100",
+          "path": [
+            "api",
+            "contatos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar Contato",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"NOVO\",\r\n  \"dataNascimento\": \"1990-01-01\",\r\n  \"observacoes\": \"Inserção via Postman\",\r\n  \"telefone\": \"119999981232\",\r\n  \"email\": \"novo@email.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5100/api/contatos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5100",
+          "path": [
+            "api",
+            "contatos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obter por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5100/api/contatos/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5100",
+          "path": [
+            "api",
+            "contatos",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Contato",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"idPessoa\": 6,\r\n  \"nome\": \"nome Atualizado\",\r\n  \"dataNascimento\": \"1998-05-15\",\r\n  \"observacoes\": \"Dados atualizados via Postman\",\r\n  \"telefone\": \"11900030000\",\r\n  \"email\": \"nome_novo@email.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5100/api/contatos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5100",
+          "path": [
+            "api",
+            "contatos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deletar Contato",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5100/api/contatos/6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5100",
+          "path": [
+            "api",
+            "contatos",
+            "6"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
