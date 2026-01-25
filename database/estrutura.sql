@@ -1,3 +1,5 @@
+CREATE DATABASE DesafioA;
+GO
 -- 1. Criar tabela Contatos
 CREATE TABLE Contatos (
     idPessoa INT IDENTITY(1,1) PRIMARY KEY,
