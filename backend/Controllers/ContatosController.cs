@@ -9,84 +9,90 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class ContatosController : ControllerBase
 {
+    // String de conexão original
     private const string ConnectionString = "Server=localhost\\SQLEXPRESS;Database=DesafioA;Trusted_Connection=True;TrustServerCertificate=True;";
 
-    // 5. Selecionar todos os registros (GET)
+    // 1. LISTAR TODOS (GET)
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        try
-        {
-            using var connection = new SqlConnection(ConnectionString);
-            var contatos = await connection.QueryAsync<Contato>("sp_SelecionarTodos", commandType: CommandType.StoredProcedure);
-            
-            Console.WriteLine("Dados retornados pela procedure sp_SelecionarTodos."); // Requisito do item 5
-            return Ok(contatos);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Erro ao acessar o banco: {ex.Message}");
-        }
+        using var connection = new SqlConnection(ConnectionString);
+        var contatos = await connection.QueryAsync<Contato>("sp_SelecionarTodos", commandType: CommandType.StoredProcedure);
+        Console.WriteLine("Dados retornados pela procedure sp_SelecionarTodos."); 
+        return Ok(contatos);
     }
 
-    // 2. Criar registros (POST)
+    // 2. SALVAR NOVO (POST) - Corrigido para funcionar com o objeto Contato
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Contato contato)
     {
         using var connection = new SqlConnection(ConnectionString);
-        var id = await connection.ExecuteScalarAsync<int>("sp_InserirContato", 
-            new { nome = contato.Nome, dataNascimento = contato.DataNascimento, observacoes = contato.Observacoes, telefone = contato.Telefone, email = contato.Email }, 
-            commandType: CommandType.StoredProcedure);
         
-        Console.WriteLine($"ID retornado pela procedure de criação: {id}"); // Requisito do item 2
+        // Mapeamos os nomes das propriedades para os parâmetros que a Procedure espera
+        var parametros = new { 
+            nome = contato.Nome, 
+            dataNascimento = contato.DataNascimento, 
+            observacoes = contato.Observacoes, 
+            telefone = contato.Telefone, 
+            email = contato.Email 
+        };
+
+        var id = await connection.ExecuteScalarAsync<int>("sp_InserirContato", parametros, commandType: CommandType.StoredProcedure);
+        
+        Console.WriteLine($"ID retornado pela procedure de criação: {id}"); 
         return Ok(new { id });
     }
 
-    // 3. Atualizar registros (PUT)
-    [HttpPut]
-    public async Task<IActionResult> Put([FromBody] Contato contato)
+    // 3. ATUALIZAR (PUT) - Rota corrigida com {id} para evitar erro 405
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, [FromBody] Contato contato)
     {
         using var connection = new SqlConnection(ConnectionString);
-        var texto = await connection.ExecuteScalarAsync<string>("sp_AtualizarContato", 
-            new { idPessoa = contato.IdPessoa, nome = contato.Nome, dataNascimento = contato.DataNascimento, observacoes = contato.Observacoes, telefone = contato.Telefone, email = contato.Email }, 
-            commandType: CommandType.StoredProcedure);
         
-        Console.WriteLine($"Retorno da procedure de atualização: {texto}"); // Requisito do item 3
+        var parametros = new { 
+            idPessoa = id, // Garante que o ID da URL seja o usado na atualização
+            nome = contato.Nome, 
+            dataNascimento = contato.DataNascimento, 
+            observacoes = contato.Observacoes, 
+            telefone = contato.Telefone, 
+            email = contato.Email 
+        };
+
+        var texto = await connection.ExecuteScalarAsync<string>("sp_AtualizarContato", parametros, commandType: CommandType.StoredProcedure);
+        
+        Console.WriteLine($"Retorno da procedure de atualização: {texto}"); 
         return Ok(new { mensagem = texto });
     }
 
-    // 4. Remover registros (DELETE)
+    // 4. REMOVER (DELETE)
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         using var connection = new SqlConnection(ConnectionString);
-        var texto = await connection.ExecuteScalarAsync<string>("sp_RemoverContato", 
-            new { idPessoa = id }, commandType: CommandType.StoredProcedure);
-        
-        Console.WriteLine($"Retorno da procedure de remoção: {texto}"); // Requisito do item 4
+        var texto = await connection.ExecuteScalarAsync<string>("sp_RemoverContato", new { idPessoa = id }, commandType: CommandType.StoredProcedure);
+        Console.WriteLine($"Retorno da procedure de remoção: {texto}"); 
         return Ok(new { mensagem = texto });
     }
 
-    // 6. Selecionar um registro específico (GET por ID)
+    // 5. OBTER POR ID (GET)
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
         using var connection = new SqlConnection(ConnectionString);
-        var contato = await connection.QueryFirstOrDefaultAsync<Contato>("sp_ObterContato", 
-            new { idPessoa = id }, commandType: CommandType.StoredProcedure);
-        
-        if (contato != null) 
-            Console.WriteLine($"Dados do registro ID {id} retornados pela procedure."); // Requisito do item 6
-            
+        var contato = await connection.QueryFirstOrDefaultAsync<Contato>("sp_ObterContato", new { idPessoa = id }, commandType: CommandType.StoredProcedure);
         return contato != null ? Ok(contato) : NotFound();
     }
 }
 
+// Classe de modelo ajustada para aceitar Datas Nulas
 public class Contato
 {
     public int IdPessoa { get; set; } 
     public string Nome { get; set; }
-    public DateTime DataNascimento { get; set; }
+    
+    // O '?' resolve o erro "SqlDateTime overflow" enviando NULL em vez de data zerada
+    public DateTime? DataNascimento { get; set; } 
+    
     public string Observacoes { get; set; }
     public string Telefone { get; set; }
     public string Email { get; set; }

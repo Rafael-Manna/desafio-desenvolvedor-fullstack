@@ -1,0 +1,128 @@
+/* Configuração Global */
+:host {
+  display: block;
+  background-color: #121417; 
+  min-height: 100vh;
+  color: #e9ecef;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Card Principal */
+.main-card {
+  background: rgba(30, 34, 40, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-header-custom {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label-sombria {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #adb5bd;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Inputs Customizados */
+.custom-input {
+  background-color: #252a31 !important;
+  border: 1px solid #3d4450 !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+  border-color: #8b9d77 !important;
+  box-shadow: 0 0 0 3px rgba(139, 157, 119, 0.2) !important;
+  outline: none;
+}
+
+/* Botão Salvar/Atualizar (Verde Oliva) */
+.btn-primary-custom {
+  background-color: #8b9d77;
+  border: none;
+  border-radius: 12px;
+  color: #121417;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-primary-custom:hover {
+  background-color: #a3b58f;
+  transform: translateY(-2px);
+  color: #121417;
+}
+
+/* TABELA - Correção de cores e hover */
+.table {
+  color: #d1d5db;
+}
+
+.table thead th {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  color: #d7ccc8; /* Bege */
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Impede que o texto fique preto ao passar o mouse */
+.table-hover tbody tr:hover td, 
+.table-hover tbody tr:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Estilo Zebra suave */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* BOTÕES DE AÇÃO (Visíveis e Sóbrios) */
+.btn-action-edit {
+  background-color: #4a5d4a; /* Verde Oliva Fechado */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 4px 12px;
+  transition: background 0.3s;
+}
+
+.btn-action-edit:hover {
+  background-color: #8b9d77;
+  color: #121417;
+}
+
+.btn-action-delete {
+  background-color: #723a3a; /* Vermelho Sóbrio */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 4px 12px;
+  transition: background 0.3s;
+}
+
+.btn-action-delete:hover {
+  background-color: #a65d5d;
+}
+
+/* Paginação */
+.pagination-controls {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-bege {
+  color: #d7ccc8;
+}
