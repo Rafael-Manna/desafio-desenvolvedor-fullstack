@@ -27,9 +27,7 @@ export class ContatosComponent implements OnInit {
   itensPorPagina = 5;
   totalPaginas = 1;
 
-  ngOnInit() { 
-    this.listar(); 
-  }
+  ngOnInit() { this.listar(); }
 
   listar() {
     this.http.get<any[]>(this.apiUrl).subscribe({
@@ -86,7 +84,7 @@ export class ContatosComponent implements OnInit {
   }
 
   excluir(id: number) {
-    if (confirm('Deseja excluir este contato?')) {
+    if (confirm('Deseja realmente excluir este contato?')) {
       this.http.delete(`${this.apiUrl}/${id}`).subscribe(() => this.listar());
     }
   }

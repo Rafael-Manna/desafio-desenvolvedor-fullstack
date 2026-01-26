@@ -1,4 +1,3 @@
-/* Fundo azul profundo e reset de cores */
 body {
   margin: 0;
   padding: 0;
@@ -7,8 +6,7 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-/* Garante que textos secundários não fiquem pretos */
-.text-muted, .text-secondary, span, p, button:not(.btn-primary-custom) {
+.text-muted, .text-secondary, span, p, .btn-paginacao {
   color: #a1a1aa !important; 
 }
 
@@ -16,7 +14,6 @@ body {
   color: #ffffff !important; 
 }
 
-/* Reset de tabelas */
 .table {
   --bs-table-bg: transparent !important;
   --bs-table-color: #ffffff !important;
