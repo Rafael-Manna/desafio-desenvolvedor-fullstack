@@ -1,0 +1,100 @@
+.main-card {
+  background-color: #18181b; 
+  border: 1px solid #27272a;
+  border-radius: 12px;
+}
+
+.label-sombria {
+  font-size: 0.85rem;
+  color: #e4e4e7 !important;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.custom-input {
+  background-color: #27272a !important;
+  border: 1px solid #3f3f46 !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+}
+
+/* NOVO BOTÃO SALVAR: Verde Oliva Sofisticado */
+.btn-primary-custom {
+  background-color: #6d7a5f !important; /* Verde oliva mais fechado e sóbrio */
+  border: none;
+  border-radius: 8px;
+  color: #ffffff !important; /* Texto branco para melhor leitura no verde escuro */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary-custom:hover { 
+  background-color: #5b674f !important; 
+}
+
+/* Botão Cancelar */
+.btn-cancelar {
+  background: transparent;
+  border: 1px solid #a65151;
+  color: #efcccc !important;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* Paginação - Corrigindo o preto */
+.btn-paginacao {
+  background: transparent;
+  border: none;
+  color: #a1a1aa !important;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.btn-paginacao:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* Tabela Zebrada Premium */
+.custom-table-zebra thead th {
+  color: #a1a1aa !important;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid #27272a;
+  padding: 12px;
+}
+
+.custom-table-zebra td {
+  padding: 12px;
+  border-bottom: 1px solid #27272a;
+  color: #ffffff !important;
+}
+
+.custom-table-zebra tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* Botões da Tabela */
+.btn-action-edit {
+  background-color: #435334;
+  color: #cedebd !important;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  margin-right: 5px;
+}
+
+.btn-action-delete {
+  background-color: #723a3a;
+  color: #efcccc !important;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+}
+
+.search-box {
+  background-color: #09090b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+}

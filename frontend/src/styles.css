@@ -1,8 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
-/* Isso remove o branco das laterais e do fundo total da página */
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #121417 !important; /* A mesma cor do seu fundo dark */
-    min-height: 100vh;
+/* Fundo azul profundo e reset de cores */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121214 !important; 
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Garante que textos secundários não fiquem pretos */
+.text-muted, .text-secondary, span, p, button:not(.btn-primary-custom) {
+  color: #a1a1aa !important; 
+}
+
+.text-white, h3, b, strong, .fw-bold {
+  color: #ffffff !important; 
+}
+
+/* Reset de tabelas */
+.table {
+  --bs-table-bg: transparent !important;
+  --bs-table-color: #ffffff !important;
+  --bs-table-border-color: #27272a !important;
 }

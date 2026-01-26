@@ -1,0 +1,86 @@
+<div class="container py-5">
+  <div class="main-card p-4 shadow-lg">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="m-0 fw-bold d-flex align-items-center text-white">
+        <span class="me-2">{{ editando ? '📝' : '👥' }}</span>
+        {{ editando ? 'Editando Registro' : 'Gestão de Contatos' }}
+      </h3>
+      <button *ngIf="editando" class="btn-cancelar" (click)="limpar()">
+        Cancelar Edição
+      </button>
+    </div>
+
+    <div class="row g-3 mb-5">
+      <div class="col-md-4">
+        <label class="label-sombria">Nome Completo</label>
+        <input type="text" class="form-control custom-input" [(ngModel)]="contato.nome">
+      </div>
+      <div class="col-md-4">
+        <label class="label-sombria">Telefone</label>
+        <input type="text" class="form-control custom-input" [(ngModel)]="contato.telefone" placeholder="(00) 00000.0000">
+      </div>
+      <div class="col-md-4">
+        <label class="label-sombria">E-mail</label>
+        <input type="email" class="form-control custom-input" [(ngModel)]="contato.email">
+      </div>
+      <div class="col-md-3">
+        <label class="label-sombria">Data de Nascimento</label>
+        <input type="date" class="form-control custom-input" [(ngModel)]="contato.dataNascimento">
+      </div>
+      <div class="col-md-7">
+        <label class="label-sombria">Observações</label>
+        <input type="text" class="form-control custom-input" [(ngModel)]="contato.observacoes">
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn-primary-custom w-100 py-2" (click)="salvar()">
+          {{ editando ? 'Atualizar' : 'Salvar' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="search-box p-2 mb-4">
+      <div class="input-group">
+        <span class="input-group-text bg-transparent border-0 text-white">🔍</span>
+        <input type="text" class="form-control border-0 bg-transparent text-white" 
+               placeholder="Pesquisar por nome ou e-mail..." 
+               [(ngModel)]="termoBusca" (input)="filtrar()">
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table custom-table-zebra">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>E-MAIL</th>
+            <th>NASCIMENTO</th>
+            <th class="text-center">AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of contatosPaginados">
+            <td class="text-secondary small">#{{ c.idPessoa || c.IdPessoa }}</td>
+            <td class="fw-bold text-white">{{ c.nome || c.Nome }}</td>
+            <td class="text-secondary">{{ c.email || c.Email }}</td>
+            <td class="text-secondary">{{ (c.dataNascimento || c.DataNascimento) | date:'dd/MM/yyyy' }}</td>
+            <td class="text-center">
+              <button class="btn-action-edit" (click)="prepararEdicao(c)">Editar</button>
+              <button class="btn-action-delete" (click)="excluir(c.idPessoa || c.IdPessoa)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <span class="text-secondary small">Total: <b>{{ contatosFiltrados.length }}</b> contatos</span>
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn-paginacao" [disabled]="paginaAtual === 1" (click)="mudarPagina(-1)">Anterior</button>
+        <span class="text-white small fw-bold">{{ paginaAtual }} / {{ totalPaginas }}</span>
+        <button class="btn-paginacao" [disabled]="paginaAtual >= totalPaginas" (click)="mudarPagina(1)">Próxima</button>
+      </div>
+    </div>
+  </div>
+</div>

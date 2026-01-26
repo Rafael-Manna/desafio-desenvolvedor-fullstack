@@ -1,5 +1,5 @@
 -- 10. Testar Inserção
-EXEC sp_InserirContato 'Teste', '1998-01-01', 'Teste de inserção', '11991239944', 'teste@email.com';
+EXEC sp_InserirContato 'Teste', '1998-01-01', 'Teste de inserção', '1199149944', 'teste@email.com';
 
 -- 11. Testar Atualização (ajuste o ID conforme o que foi gerado acima)
 EXEC sp_AtualizarContato 1, 'Nome Atualizado', '2000-01-01', 'Observação nova', '11999999999', 'novo@email.com';

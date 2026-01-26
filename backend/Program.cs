@@ -1,15 +1,22 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona a regra de CORS (Libera acesso para o Angular)
+// Ativa o suporte para os Controllers (suas APIs de Contatos)
+builder.Services.AddControllers();
+
+// Configura o CORS para o Angular conseguir conversar com o C#
 builder.Services.AddCors(options => {
-    options.AddPolicy("AllowAngular", policy => {
-        policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+    options.AddDefaultPolicy(policy => {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 
-builder.Services.AddControllers();
 var app = builder.Build();
 
-app.UseCors("AllowAngular"); // Ativa a permissão de acesso
+// Ordem correta de ativação
+app.UseCors(); 
+app.UseAuthorization();
 app.MapControllers();
+
 app.Run();
