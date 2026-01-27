@@ -31,7 +31,7 @@ Nota: Este script muda automaticamente o contexto para o novo banco.
 
 Executar funções.sql:
 
-Com o banco já criado, execute este arquivo para instalar as Stored Procedures que a API utiliza.
+Com o banco já criado, Este arquivo instala as Stored Procedures (sp_InserirContato, sp_SelecionarTodos, etc.) que a API utiliza para o CRUD.
 
 2. Backend (API)
 Navegue até a pasta: cd backend.
