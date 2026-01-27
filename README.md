@@ -5,23 +5,51 @@
 
 Este projeto é uma aplicação **web Fullstack** para gerenciamento de contatos, desenvolvida com o objetivo de demonstrar habilidades práticas em **Angular**, **ASP.NET Core** e **SQL Server**.
 
-A aplicação conta com uma interface moderna em **Dark Mode**, utilizando uma paleta de cores sóbria baseada em **Verde Oliva** e **Bege**, proporcionando uma experiência visual imersiva e profissional.
-
 ---
 
-## 🚀 Tecnologias Utilizadas
+🛠️ Tecnologias e Ferramentas
+Frontend: Angular 14+
 
-### Frontend
+Backend: .NET Web API 
 
-* **Angular 8** (node 14.17.0) utilizei a versão antiga pois era requisitado no desafio — Framework principal para construção da interface.
-* **Bootstrap** — Utilizado para layout responsivo e componentes base.
-* **CSS Moderno** — Aplicação de efeitos de *Glassmorphism*, sombras e profundidade visual.
+Banco de Dados: SQL Server 2019 Express 
 
-### Backend
+🚀 Como Configurar e Rodar
 
-* **ASP.NET Core Web API**10.0.102 (versão atual) — Estrutura robusta para gerenciamento das rotas e regras de negócio.
-* **Dapper** — Micro-ORM para execução eficiente de **Stored Procedures**.
-* **SQL Server** 2019 express — Banco de dados relacional para persistência das informações.
+1. Configuração do Banco de Dados (SQL Server)
+⚠️ Importante: Antes de rodar os scripts, você deve conectar seu gerenciador (VS Code ou SSMS) ao servidor SQL local (geralmente localhost\SQLEXPRESS ou .\SQLEXPRESS).
+
+Para configurar o banco BancoDeContatos, siga esta ordem:
+
+Conectar ao Servidor: No VS Code (extensão mssql) ou SSMS, crie uma conexão com o servidor local usando Windows Authentication.
+
+Executar estrutura.sql:
+
+Abra este arquivo e execute-o. Ele criará o banco de dados BancoDeContatos e a tabela Contatos.
+
+Nota: Este script muda automaticamente o contexto para o novo banco.
+
+Executar funções.sql:
+
+Com o banco já criado, execute este arquivo para instalar as Stored Procedures que a API utiliza.
+
+2. Backend (API)
+Navegue até a pasta: cd backend.
+
+Inicie o servidor:
+
+Bash
+dotnet run
+A API estará ativa em http://localhost:5100/api/contatos
+
+3. Frontend (Angular)
+Navegue até a pasta: cd frontend.
+
+Instale as dependências: npm install.
+
+Inicie a aplicação: npm start.
+
+Acesse http://localhost:4200 no seu navegador.
 
 
 ## 👨‍💻 Autor
