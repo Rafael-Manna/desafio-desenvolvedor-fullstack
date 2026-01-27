@@ -9,8 +9,8 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class ContatosController : ControllerBase
 {
-    // String de conexão original
-    private const string ConnectionString = "Server=localhost\\SQLEXPRESS;Database=DesafioA;Trusted_Connection=True;TrustServerCertificate=True;";
+    // CONECTA AO COM O BANCO DE DADOS SQL SERVER
+    private const string ConnectionString = "Server=localhost\\SQLEXPRESS;Database=BancoDeContatos;Trusted_Connection=True;TrustServerCertificate=True;";
 
     // 1. LISTAR TODOS (GET)
     [HttpGet]
@@ -22,7 +22,7 @@ public class ContatosController : ControllerBase
         return Ok(contatos);
     }
 
-    // 2. SALVAR NOVO (POST) - Corrigido para funcionar com o objeto Contato
+    // 2. SALVAR NOVO (POST) 
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] Contato contato)
     {

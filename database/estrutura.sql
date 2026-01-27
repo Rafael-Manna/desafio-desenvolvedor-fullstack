@@ -1,4 +1,5 @@
-CREATE DATABASE DesafioA;
+CREATE DATABASE BancoDeContatos;
+USE BancoDeContatos;
 GO
 -- 1. Criar tabela Contatos
 CREATE TABLE Contatos (
@@ -24,3 +25,5 @@ GO
 ALTER TABLE Contatos ADD CONSTRAINT UQ_Contatos_Telefone UNIQUE (telefone);
 GO
  
+ USE master;
+GO
