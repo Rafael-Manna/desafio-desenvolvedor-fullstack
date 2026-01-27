@@ -1,3 +1,4 @@
+/* --- BASE DO CARD E INPUTS --- */
 .main-card {
   background-color: #18181b; 
   border: 1px solid #27272a;
@@ -6,7 +7,7 @@
 
 .label-sombria {
   font-size: 0.85rem;
-  color: #e4e4e7 !important;
+  color: #e4e4e7;
   margin-bottom: 5px;
   display: block;
 }
@@ -18,6 +19,12 @@
   border-radius: 8px !important;
 }
 
+/* --- PLACEHOLDERS --- */
+.custom-input::placeholder {
+  color: #71717a;
+}
+
+/* --- BOTOES PRINCIPAIS --- */
 .btn-primary-custom {
   background-color: #5b674f !important; 
   border: none;
@@ -25,28 +32,35 @@
   color: #ffffff !important;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
+.btn-primary-custom:hover { 
+  background-color: #4a5440 !important;
+}
+
+/* BOTÃO CANCELAR EDIÇÃO (ESTILIZADO) */
 .btn-cancelar {
   background: transparent;
-  border: 1px solid #a65151;
-  color: #efcccc !important;
-  border-radius: 20px;
-  padding: 5px 15px;
+  border: 1px solid #3f3f46;
+  color: #a1a1aa !important;
+  border-radius: 6px;
+  padding: 6px 16px;
   font-size: 0.8rem;
-}
-
-.btn-paginacao {
-  background: transparent;
-  border: none;
-  color: #a1a1aa !important;
-  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
-.btn-paginacao:disabled { opacity: 0.3; }
 
+.btn-cancelar:hover {
+  border-color: #723a3a;
+  color: #efcccc !important;
+  background-color: rgba(114, 58, 58, 0.1);
+}
+
+/* --- TABELA E HOVER --- */
 .custom-table-zebra thead th {
-  color: #a1a1aa !important;
+  color: #a1a1aa;
   font-size: 0.75rem;
   text-transform: uppercase;
   border-bottom: 2px solid #27272a;
@@ -59,12 +73,22 @@
 }
 
 .custom-table-zebra tbody tr:nth-child(odd) {
-  background-color: rgba(255, 255, 255, 0.02) !important;
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
+.custom-table-zebra tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  cursor: pointer;
+}
+
+.custom-table-zebra tbody tr:hover td:first-child {
+  box-shadow: inset 4px 0 0 0 #5b674f;
+}
+
+/* --- BOTOES DE AÇÃO --- */
 .btn-action-edit {
   background-color: #435334;
-  color: #cedebd !important;
+  color: #cedebd;
   border: none;
   border-radius: 6px;
   padding: 4px 12px;
@@ -73,14 +97,48 @@
 
 .btn-action-delete {
   background-color: #723a3a;
-  color: #efcccc !important;
+  color: #efcccc;
   border: none;
   border-radius: 6px;
   padding: 4px 12px;
 }
 
+/* Efeito para o botão Editar */
+.btn-action-edit {
+  transition: all 0.3s ease;
+}
+
+.btn-action-edit:hover {
+  background-color: #556942 !important; /* Verde mais claro */
+  transform: scale(1.05); /* Leve aumento */
+  color: #ffffff !important;
+}
+
+/* Efeito para o botão Excluir */
+.btn-action-delete {
+  transition: all 0.3s ease;
+}
+
+.btn-action-delete:hover {
+  background-color: #8f4848 !important; /* Vermelho mais vivo */
+  transform: scale(1.05); /* Leve aumento */
+  color: #ffffff !important;
+}
+
+/* --- BUSCA E PAGINAÇÃO --- */
 .search-box {
   background-color: #09090b;
   border: 1px solid #27272a;
   border-radius: 8px;
+}
+
+.btn-paginacao {
+  background: transparent;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+}
+
+.btn-paginacao:disabled {
+  opacity: 0.3;
 }
