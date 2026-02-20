@@ -36,10 +36,8 @@ Com o banco já criado, Este arquivo instala as Stored Procedures (sp_InserirCon
 2. Backend (API)
 Navegue até a pasta: cd backend.
 
-Inicie o servidor:
+Inicie o servidor com o comando :dotnet run
 
-Bash
-dotnet run
 A API estará ativa em http://localhost:5100/api/contatos
 
 3. Frontend (Angular)
